@@ -30,13 +30,19 @@ document.addEventListener('DOMContentLoaded', function(){
             xhr.setRequestHeader('Authorization', authToken);
             xhr.setRequestHeader('Content-Type', 'multipart/form-data');
             xhr.setRequestHeader('Accept', 'application/json');
+            xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://lightinvi.github.io');
+            xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE');
+            xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
     
             xhr.onload = function () {
                 console.log("submit")
                 if (xhr.status >= 200 && xhr.status < 300) {
-                console.log(xhr.responseText);
+                    console.log(xhr.responseText);
+                    title.innerHTML = '上傳完成';
                 } else {
-                console.error('Request failed:', xhr.statusText);
+                    console.error('Request failed:', xhr.statusText);
+                    title.innerHTML = '上傳失敗;'
                 }
             };
     
