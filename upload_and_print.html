@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖片上傳介面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #upload-container {
+            text-align: center;
+            padding: 20px;
+            border: 2px dashed #aaa;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        #upload-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #preview-img {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="upload-container">
+        <h2>選擇要上傳的圖片</h2>
+        <input type="file" id="file-input" accept="image/*" style="display: none;">
+        <button id="upload-btn">選擇圖片</button>
+        <img id="preview-img" src="#" alt="預覽圖片" style="display: none;">
+    </div>
+
+    <script>
+        document.getElementById('upload-btn').addEventListener('click', function() {
+            document.getElementById('file-input').click();
+        });
+
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgElement = document.getElementById('preview-img');
+                    imgElement.src = e.target.result;
+                    imgElement.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+
+
+                var fileInput = document.getElementById('fileInput');
+
+                
+                var url = 'https://discord.com/api/v10/channels/1146358218696691764/messages';
+                var authToken = 'Bot NzY1NDk0MzQ3NDEwOTY0NTAw.Gsu087.tyb4yrHGbg0DkW7k_y2mVSeFGKZdbrRPiZjKCI';
+
+                var formData = new FormData();
+                formData.append('printfile', file);
+                formData.append('content', 'print target-tag:355');
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', url, true);
+                xhr.setRequestHeader('Authorization', authToken);
+                xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+                xhr.setRequestHeader('Accept', 'application/json');
+
+                xhr.onload = function () {
+                    console.log("submit")
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                    console.log(xhr.responseText);
+                    } else {
+                    console.error('Request failed:', xhr.statusText);
+                    }
+                };
+
+                xhr.onerror = function () {
+                    console.error('Request failed');
+                };
+
+                xhr.send(formData);
+                
+            }
+        });
+    </script>
+</body>
+</html>
