@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 body: formData,
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Authorization': decrypt('uY3ANQt+2c5P7zNDzoUvf+Vy4MLvCDg+naP1w1HiVAJMwg1IDwc9FO9N3WVyAQXqCqXIbUzr5lrhZiBq0J7ZZvbfwhWa99urJRotR4oK/X4='),
+                    'Authorization': decrypt('uY3ANQt+2c5P7zNDzoUvf3g5+HFOHsT6M2Rtrc3553eZKH5UCc50oxJxrHmptNaegb2TWzhlKySHnP6bJJWalfu6du4DKmdxgtsvMmokxXo='),
                 }
             })
             .then(response => response.text())
