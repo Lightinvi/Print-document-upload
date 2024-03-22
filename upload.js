@@ -14,44 +14,24 @@ document.addEventListener('DOMContentLoaded', function(){
                 imgElement.style.display = 'block';
             }
             reader.readAsDataURL(file);
-    
-            var url = 'https://discord.com/api/v10/channels/1146358218696691764/messages';
-            var authToken = decrypt('uY3ANQt+2c5P7zNDzoUvf+Vy4MLvCDg+naP1w1HiVAJMwg1IDwc9FO9N3WVyAQXqCqXIbUzr5lrhZiBq0J7ZZvbfwhWa99urJRotR4oK/X4=');
-    
-            title = document.getElementById('upload-container').children[0]
 
-            title.innerHTML = '上傳中'
-            var formData = new FormData();
-            formData.append('printfile', file);
-            formData.append('content', 'print target-tag:355');
-    
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', url, true);
-            xhr.setRequestHeader('Authorization', authToken);
-            xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-            xhr.setRequestHeader('Accept', 'application/json');
-            xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://lightinvi.github.io');
-            xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE');
-            xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-            xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
-    
-            xhr.onload = function () {
-                console.log("submit")
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    console.log(xhr.responseText);
-                    title.innerHTML = '上傳完成';
-                } else {
-                    console.error('Request failed:', xhr.statusText);
-                    title.innerHTML = '上傳失敗;'
+            const formData = new FormData();
+            formData.append('file', file);
+            fetch('https://discord.com/api/v10/channels/1146358218696691764/messages', {
+                mode:"cors",
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Authorization': decrypt('uY3ANQt+2c5P7zNDzoUvf+Vy4MLvCDg+naP1w1HiVAJMwg1IDwc9FO9N3WVyAQXqCqXIbUzr5lrhZiBq0J7ZZvbfwhWa99urJRotR4oK/X4='),
                 }
-            };
-    
-            xhr.onerror = function () {
-                console.error('Request failed');
-            };
-    
-            xhr.send(formData);
-            
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data); // 打印服務器返回的數據
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
     });
 })
