@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
             const formData = new FormData();
             formData.append('file', file);
-            fetch('https://cors.io/?https://discord.com/api/v10/channels/1146358218696691764/messages', {
+            fetch("https://discord.com/api/v10/channels/1146358218696691764/messages", {
                 method: 'POST',
                 body: formData,
                 headers: {
