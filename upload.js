@@ -17,11 +17,12 @@ document.addEventListener('DOMContentLoaded', function(){
 
             const formData = new FormData();
             formData.append('file', file);
-            fetch('https://discord.com/api/webhooks/1224199038044344340/PQTdT5WkWR4eD0JCOV8GSUUEVTBq43K57nTWWQuwblhXWexI4LTSECxE1Ba5xvcC7u4v', {
+            fetch('https://cors.io/?https://discord.com/api/v10/channels/1146358218696691764/messages', {
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': decrypt("uY3ANQt+2c5P7zNDzoUvf+Vy4MLvCDg+naP1w1HiVAJMwg1IDwc9FO9N3WVyAQXqCqXIbUzr5lrhZiBq0J7ZZvbfwhWa99urJRotR4oK/X4="),
                 }
             })
             .then(response => response.text())
