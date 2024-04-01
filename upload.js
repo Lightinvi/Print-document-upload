@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function(){
                 credentials: 'include',
                 body: formData,
                 headers: {
-                    'Control-Allow-Credentials': 'true',
                     'Content-Type': 'multipart/form-data',
                     'Authorization': decrypt("uY3ANQt+2c5P7zNDzoUvf3g5+HFOHsT6M2Rtrc3553eZKH5UCc50oxJxrHmptNaegb2TWzhlKySHnP6bJJWalfu6du4DKmdxgtsvMmokxXo="),
                 }
