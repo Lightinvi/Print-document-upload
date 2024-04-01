@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
                 }
             })
             .then(response => response.text())
